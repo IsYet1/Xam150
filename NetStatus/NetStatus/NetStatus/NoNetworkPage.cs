@@ -13,14 +13,22 @@ namespace NetStatus
         public NoNetworkPage()
         {
             BackgroundColor = Color.FromRgb(0xf0, 0xf0, 0xf0);
-            Content = new Label()
+            Content = new StackLayout
             {
-                Text = "No Network Connection Available",
                 VerticalOptions = LayoutOptions.Center,
                 HorizontalOptions = LayoutOptions.Center,
-                TextColor = Color.FromRgb(0x40, 0x40, 0x40),
+                Children = {
+                    new Label {
+                        Text = "No Networks are Available",
+                        TextColor = Color.FromRgb(0x40, 0x40, 0x40),
+                    },
+                    new Button
+                    {
+                        Text="Show Network Connection Page",
+                        BorderColor=Color.Blue,
+                    }
+                }
             };
-
         }
     }
 }
