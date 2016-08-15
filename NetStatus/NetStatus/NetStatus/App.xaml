@@ -6,6 +6,7 @@
   <Application.Resources>
     <ResourceDictionary>
       <!--#Region Styles-->
+      <!-- The included styles are basic and are for quick starts and for examples-->
 
       <Style x:Key="baseLabelStyle" TargetType="Label">
         <Setter Property="FontSize"         Value="12" />
@@ -13,6 +14,10 @@
 
       <Style x:Key="infoLabelStyle" TargetType="Label" BasedOn="{StaticResource baseLabelStyle}">
         <Setter Property="FontAttributes"   Value="Bold" />
+      </Style>
+
+      <Style TargetType="Button">
+        <Setter Property="BorderColor" Value="Red" />
       </Style>
 
       <!--#EndRegion Styles-->

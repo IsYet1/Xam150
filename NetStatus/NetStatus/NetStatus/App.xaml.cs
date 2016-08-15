@@ -12,8 +12,9 @@ namespace NetStatus
     {
         public App()
         {
+            var startPage = new NoNetworkPage();
             InitializeComponent();
-            MainPage = new NavigationPage(new NoNetworkPage());
+            MainPage = new NavigationPage(startPage);
         }
     }
 }

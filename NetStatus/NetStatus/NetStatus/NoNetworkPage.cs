@@ -25,7 +25,7 @@ namespace NetStatus
                     new Button
                     {
                         Text="Show Network Connection Page",
-                        BorderColor=Color.Blue,
+                        //BorderColor=Color.Blue,
                     }
                 }
             };
