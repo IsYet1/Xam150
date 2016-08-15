@@ -18,6 +18,8 @@
 
       <Style TargetType="Button">
         <Setter Property="BorderColor" Value="Red" />
+        <Setter Property="BorderRadius" Value="10" />
+        <Setter Property="BackgroundColor" Value="Gray" />
       </Style>
 
       <!--#EndRegion Styles-->
