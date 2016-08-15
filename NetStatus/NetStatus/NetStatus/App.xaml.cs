@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Plugin.Connectivity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,13 @@ namespace NetStatus
     {
         public App()
         {
-            var startPage = new NoNetworkPage();
             InitializeComponent();
-            MainPage = new NavigationPage(startPage);
+            //var isConnected = CrossConnectivity.Current.IsConnected;
+            MainPage = new NoNetworkPage();
+            //MainPage = new NetworkViewPage();
+            //MainPage = (CrossConnectivity.Current.IsConnected)
+            //    ? (Page)new NetworkViewPage()
+            //    : new NoNetworkPage();
         }
     }
 }
