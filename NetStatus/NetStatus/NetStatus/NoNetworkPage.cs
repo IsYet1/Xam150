@@ -12,7 +12,12 @@ namespace NetStatus
     {
         public NoNetworkPage()
         {
+            Button btnShowConnectionPage = new Button();
+            btnShowConnectionPage.Clicked += btnShowConnectionPage_Click;
+            btnShowConnectionPage.Text = "Show Network Connection Page";
+
             BackgroundColor = Color.FromRgb(0xf0, 0xf0, 0xf0);
+
             Content = new StackLayout
             {
                 VerticalOptions = LayoutOptions.Center,
@@ -22,12 +27,14 @@ namespace NetStatus
                         Text = "No Networks are Available",
                         TextColor = Color.FromRgb(0x40, 0x40, 0x40),
                     },
-                    new Button
-                    {
-                        Text="Show Network Connection Page",
-                    }
+                    btnShowConnectionPage,
                 }
             };
+        }
+
+        private void btnShowConnectionPage_Click(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NetworkViewPage());
         }
     }
 }
