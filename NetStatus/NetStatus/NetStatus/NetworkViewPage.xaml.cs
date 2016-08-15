@@ -14,5 +14,11 @@ namespace NetStatus
         {
             InitializeComponent();
         }
+
+        private void openNoNetworkPage(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new NoNetworkPage());
+        }
     }
+
 }
