@@ -15,11 +15,11 @@ namespace NetStatus
         {
             InitializeComponent();
             //var isConnected = CrossConnectivity.Current.IsConnected;
-            MainPage = new NoNetworkPage();
+            //MainPage = new NoNetworkPage();
             //MainPage = new NetworkViewPage();
-            //MainPage = (CrossConnectivity.Current.IsConnected)
-            //    ? (Page)new NetworkViewPage()
-            //    : new NoNetworkPage();
+            MainPage = (CrossConnectivity.Current.IsConnected)
+                ? (Page)new NetworkViewPage()
+                : new NoNetworkPage();
         }
     }
 }
