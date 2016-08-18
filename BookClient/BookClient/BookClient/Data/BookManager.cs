@@ -26,10 +26,13 @@ namespace BookClient.Data
             return client;
         }
 
-        public Task<IEnumerable<Book>> GetAll()
+        public async Task<IEnumerable<Book>> GetAll()
         {
-            // TODO: use GET to retrieve books
-            throw new NotImplementedException();
+            var client = await GetClient();
+            var booksListJson =await  client.GetStringAsync(Url);
+            var booksList = JsonConvert.DeserializeObject<IEnumerable<Book>>(booksListJson);
+
+            return booksList;
         }
 
         public Task<Book> Add(string title, string author, string genre)
