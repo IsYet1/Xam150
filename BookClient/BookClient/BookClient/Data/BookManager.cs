@@ -14,8 +14,8 @@ namespace BookClient.Data
 
         private async Task<HttpClient> GetClient()
         {
-            var client = new HttpClient();
-            if (!String.IsNullOrEmpty(authorizationKey))
+            HttpClient client = new HttpClient();
+            if (String.IsNullOrEmpty(authorizationKey))
             {
                 authorizationKey = await client.GetStringAsync(Url + "login");
                 authorizationKey = JsonConvert.DeserializeObject<String>(authorizationKey);
