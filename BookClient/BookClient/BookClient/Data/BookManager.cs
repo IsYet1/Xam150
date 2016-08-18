@@ -53,16 +53,24 @@ namespace BookClient.Data
 
             var response = await client.PostAsync(Url, bookHttpContent);
 
-            return JsonConvert.DeserializeObject<Book>(
-                await response.Content.ReadAsStringAsync()
-                );
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+            return JsonConvert.DeserializeObject<Book>(responseContent);
             
         }
 
-        public Task Update(Book book)
+        public async Task Update(Book book)
         {
-            // TODO: use PUT to update a book
-            throw new NotImplementedException();
+            HttpClient client = await GetClient();
+
+            string bookJson = JsonConvert.SerializeObject(book);
+            HttpContent bookHttpContent = new StringContent(bookJson, Encoding.UTF8, "application/json");
+
+            var response = await client.PutAsync(Url + book.ISBN, bookHttpContent);
+
+            var responseContent = await response.Content.ReadAsStringAsync();
+
+
         }
 
         public Task Delete(string isbn)
