@@ -10,7 +10,7 @@ namespace BookClient.Data
     public class BookManager
     {
         const string Url = "http://xam150.azurewebsites.net/api/books/";
-        private string authorizationKey;
+        private string authorizationKey = "25366a12-c72a-4c56-a657-a6c12618cb00";
 
         private async Task<HttpClient> GetClient()
         {
@@ -73,10 +73,12 @@ namespace BookClient.Data
 
         }
 
-        public Task Delete(string isbn)
+        public async Task Delete(string isbn)
         {
-            // TODO: use DELETE to delete a book
-            throw new NotImplementedException();
+            HttpClient client = await GetClient();
+
+            await client.DeleteAsync(Url + isbn);
+
         }
     }
 }
