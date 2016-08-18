@@ -35,10 +35,28 @@ namespace BookClient.Data
             return booksList;
         }
 
-        public Task<Book> Add(string title, string author, string genre)
+        public async Task<Book> Add(string title, string author, string genre)
         {
-            // TODO: use POST to add a book
-            throw new NotImplementedException();
+            var book = new Book()
+            {
+                Title = title,
+                Genre = genre,
+                Authors = new List<string>(new[] { author }),
+                ISBN = "",
+                PublishDate = DateTime.Now.Date,
+            };
+
+            HttpClient client = await GetClient();
+
+            var bookJson = JsonConvert.SerializeObject(book);
+            var bookHttpContent = new StringContent(bookJson, Encoding.UTF8, "application/json");
+
+            var response = await client.PostAsync(Url, bookHttpContent);
+
+            return JsonConvert.DeserializeObject<Book>(
+                await response.Content.ReadAsStringAsync()
+                );
+            
         }
 
         public Task Update(Book book)
