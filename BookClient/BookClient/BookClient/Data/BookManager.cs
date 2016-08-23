@@ -10,7 +10,7 @@ namespace BookClient.Data
     public class BookManager
     {
         const string Url = "http://xam150.azurewebsites.net/api/books/";
-        private string authorizationKey = "25366a12-c72a-4c56-a657-a6c12618cb00";
+        private string authorizationKey; // = "25366a12-c72a-4c56-a657-a6c12618cb00";
 
         private async Task<HttpClient> GetClient()
         {
@@ -29,10 +29,19 @@ namespace BookClient.Data
         public async Task<IEnumerable<Book>> GetAll()
         {
             var client = await GetClient();
-            var booksListJson =await  client.GetStringAsync(Url);
-            var booksList = JsonConvert.DeserializeObject<IEnumerable<Book>>(booksListJson);
+            try
+            {
+                var booksListJson = await client.GetStringAsync(Url);
+                var booksList = JsonConvert.DeserializeObject<IEnumerable<Book>>(booksListJson);
 
-            return booksList;
+                return booksList;
+
+            }
+            catch (Exception e)
+            {
+
+                throw;
+            }
         }
 
         public async Task<Book> Add(string title, string author, string genre)
